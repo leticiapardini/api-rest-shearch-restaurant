@@ -17,7 +17,7 @@ model Restaurants {
   street      String
   city        String
   type        String
-  password    String  @unique
+  password    String
   cellphone   String
   socialMidea String?
   link        String?
@@ -27,26 +27,16 @@ model Restaurants {
 }
 
 model Times {
-  id                  String   @id @default(uuid())
-  start_time          DateTime
-  end_time            DateTime
+  id                  String  @id @default(uuid())
+  start_time          String
+  end_time            String
   interval            Boolean
-  start_time_interval DateTime
-  end_time_interval   DateTime
+  start_time_interval String?
+  end_time_interval   String?
+  dayWeek             String
 
-  dayWeek Week?   @relation(fields: [week_id], references: [id])
-  week_id String?
-
-  restaurant    Restaurants? @relation(fields: [restaurant_id], references: [id])
-  restaurant_id String?
+  restaurant    Restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  restaurant_id String
 
   @@map("times")
-}
-
-model Week {
-  id       String  @id @default(uuid())
-  cod_week Int
-  times    Times[]
-
-  @@map("week")
 }

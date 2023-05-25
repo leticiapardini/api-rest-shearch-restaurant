@@ -37,3 +37,28 @@ export const validateFildDeleteRestaurant =
       return res.status(500).json({ type: err.name, message: err.message });
     }
   };
+
+  export const validateFildNewTimes =
+  (schema: any) => async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await schema.validate({
+        body: req.body,
+      });
+      return next();
+    } catch (err: any) {
+      return res.status(500).json({ type: err.name, message: err.message });
+    }
+  };
+
+  export const validateFildUpdateTimes =
+  (schema: any) => async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      await schema.validate({
+        body: req.body,
+        params: req.params,
+      });
+      return next();
+    } catch (err: any) {
+      return res.status(500).json({ type: err.name, message: err.message });
+    }
+  };
