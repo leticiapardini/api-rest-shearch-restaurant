@@ -12,7 +12,7 @@ datasource db {
 
 model Restaurants {
   id          String  @id @default(uuid())
-  name        String
+  name        String  @unique
   number      Int
   street      String
   city        String
