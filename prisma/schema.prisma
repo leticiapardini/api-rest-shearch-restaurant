@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Restaurants {
+  id          String  @id @default(uuid())
+  name        String
+  number      Int
+  street      String
+  city        String
+  type        String
+  password    String  @unique
+  cellphone   String
+  socialMidea String?
+  link        String?
+  times       Times[]
+
+  @@map("restaurants")
+}
+
+model Times {
+  id                  String   @id @default(uuid())
+  start_time          DateTime
+  end_time            DateTime
+  interval            Boolean
+  start_time_interval DateTime
+  end_time_interval   DateTime
+
+  dayWeek Week?   @relation(fields: [week_id], references: [id])
+  week_id String?
+
+  restaurant    Restaurants? @relation(fields: [restaurant_id], references: [id])
+  restaurant_id String?
+
+  @@map("times")
+}
+
+model Week {
+  id       String  @id @default(uuid())
+  cod_week Int
+  times    Times[]
+
+  @@map("week")
+}
