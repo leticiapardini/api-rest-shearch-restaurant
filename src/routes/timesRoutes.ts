@@ -1,19 +1,8 @@
 import { Request, Response, Router } from "express";
-import { CreateNewRestaurant } from "../useCases/Restaurants/create";
-import { getAllRestaurants } from "../useCases/Restaurants/getAll";
-import { GetAllRestaurantsById } from "../useCases/Restaurants/getById";
 import {
-  validateFildDeleteRestaurant,
-  validateFildNewRestaurant,
   validateFildNewTimes,
-  validateFildUpdateRestaurant,
   validateFildUpdateTimes,
 } from "../middlewares/validate";
-import { linkSchemaCreateRestaurant } from "../utils/validate/validateCreateNewRestaurant";
-import { linkSchemaUpdateRestaurant } from "../utils/validate/validateUpdateRestaurant";
-import { updateRestaurant } from "../useCases/Restaurants/update";
-import { linkSchemaDeleteRestaurant } from "../utils/validate/validadeDeleteRestaurant";
-import { deleteRestaurant } from "../useCases/Restaurants/delete";
 import { linkSchemaCreateTimes } from "../utils/validate/validateCreateTimes";
 import { CreateNewTimes } from "../useCases/Times/create";
 import { GetAllTimes } from "../useCases/Times/getAll";
@@ -35,9 +24,7 @@ timesRouter.post(
 );
 
 timesRouter.get("/", async (req: Request, res: Response) => {
-  console.log('aquii')
   const response = GetAllTimes(res);
-  console.log('dps do aqui')
   return response;
 });
 
