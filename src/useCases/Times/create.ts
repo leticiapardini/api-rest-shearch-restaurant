@@ -24,7 +24,6 @@ export const CreateNewTimes = async (
     }
     return res.status(400).json({message: "Not possible create new restaurant"})
   } catch (error) {
-    console.log(error)
     res.status(500).json({ message: error });
   }
 };
