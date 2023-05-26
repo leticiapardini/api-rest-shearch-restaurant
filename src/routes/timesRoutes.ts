@@ -35,7 +35,9 @@ timesRouter.post(
 );
 
 timesRouter.get("/", async (req: Request, res: Response) => {
+  console.log('aquii')
   const response = GetAllTimes(res);
+  console.log('dps do aqui')
   return response;
 });
 

@@ -5,6 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node ./src/server.ts ",
+    "start": "npm  --exec ts-node ./src/server.ts ",
+    "start:prod": " npx prisma migrate deploy && nodemon --config nodemon.json src/server.ts ",
+    "start:migrate:prod": "npx prisma deploy && npm run start:prod",
+    "build": "tsc --build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
