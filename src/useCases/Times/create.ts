@@ -20,9 +20,11 @@ export const CreateNewTimes = async (
       }
     })
     if(response) {
-      res.status(201).json({ data: response})
+      return res.status(201).json({ data: response})
     }
+
     return res.status(400).json({message: "Not possible create new restaurant"})
+    
   } catch (error) {
     res.status(500).json({ message: error });
   }

@@ -23,3 +23,7 @@ export interface dtoUpdateRestaurantes {
   link: string;
   number: number;
 }
+
+export interface dtoDeleteRestaurantes {
+  password: string;
+}

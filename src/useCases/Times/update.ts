@@ -11,7 +11,7 @@ export const UpdateTimes = async (id: string, dtoUpdateTimes: dtoUpdateTimes, re
       }
     })
     if(updateTime) {
-      res.status(200).json({ data: updateTime})
+     return res.status(200).json({ data: updateTime})
     }else {
       return res.status(400).json({message: "Error update Times"})
     }

@@ -8,6 +8,7 @@ export const deleteRestaurant = async (
   password: string,
   res: Response
 ) => {
+  console.log(password)
   const selectRestaurant: Restaurants | null =
     await prisma.restaurants.findUnique({
       where: { id: id },
